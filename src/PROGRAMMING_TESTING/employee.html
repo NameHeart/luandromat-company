@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Information</title>
+  <style>
+    #head_text{
+        font-size: 20px;
+    }
+    #employeeName {
+      width: 300px;
+      height: 40px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    #employeeInfo {
+      font-size: 20px;
+    }
+
+    #displayButton {
+      height: 50px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #displayButton:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>Employee Information</h1>
+
+  <div>
+    <label for="employeeName" id="head_text">Enter employee name:</label>
+    <input type="text" id="employeeName" placeholder="Employee name" >
+    <button id="displayButton" onclick="displayEmployeeInfo()" style="height: 50px;">Display Info</button>
+  </div>
+
+  <p id="employeeInfo"></p>
+
+
+
+
+<script>
+    function displayEmployeeInfo() {
+      const employees = [
+        { name: "Arm", position: "Front End" },
+        { name: "Game", position: "Back End" },
+        // เพิ่มemployees ตรงนี้
+      ];
+  
+      const targetName = document.getElementById("employeeName").value.toLowerCase(); // Convert input to lowercase
+      const employeeInfo = document.getElementById("employeeInfo");
+      
+      const employee = employees.find((emp) => emp.name.toLowerCase() === targetName); // Compare in lowercase
+  
+      if (employee) {
+        employeeInfo.textContent = `ชื่อ ${employee.name} ตำแหน่ง ${employee.position}`;
+      } else {
+        employeeInfo.textContent = `Employee with name ${targetName} not found.`;
+      }
+    }
+  </script>
+  
+</body>
+</html>
